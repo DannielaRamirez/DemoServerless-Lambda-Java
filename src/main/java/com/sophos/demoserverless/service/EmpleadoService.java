@@ -13,8 +13,6 @@ import java.util.UUID;
 
 public class EmpleadoService {
 
-	private static final String HK_PARAMETRO = "EMPLEADO";
-
 	private final EmpleadoRepository empleadoRepository;
 	private final SqsService sqsService;
 
@@ -23,11 +21,9 @@ public class EmpleadoService {
 		sqsService = new SqsService(context);
 	}
 
-	public EmpleadoResponse get(UUID codigo) {
-		final Empleado empleado = empleadoRepository.findById(codigo)
+	public void get(UUID codigo) {
+		empleadoRepository.findById(codigo)
 			.orElseThrow(() -> new Error(404, "No existe el código '" + codigo + "'"));
-
-		return mapResponse(empleado);
 	}
 
 	public EmpleadoResponse post(EmpleadoRequest request) {
