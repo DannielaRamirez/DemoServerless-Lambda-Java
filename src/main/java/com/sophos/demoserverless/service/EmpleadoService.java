@@ -52,7 +52,7 @@ public class EmpleadoService {
 
 		final EmpleadoResponse response = mapResponse(empleadoRepository.save(empleado));
 
-		sqsService.queueLog(response, "", "POST");
+		sqsService.queueLog(response, "", "PUT");
 
 		return response;
 	}
