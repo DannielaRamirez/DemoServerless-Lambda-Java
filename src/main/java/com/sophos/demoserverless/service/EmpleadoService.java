@@ -36,7 +36,7 @@ public class EmpleadoService {
 
 		final EmpleadoResponse response = mapResponse(empleadoRepository.save(empleado));
 
-		sqsService.queueLog(response, "", "POST");
+		sqsService.queueLog(response, "POJO", "POST");
 
 		return response;
 	}
@@ -52,7 +52,7 @@ public class EmpleadoService {
 
 		final EmpleadoResponse response = mapResponse(empleadoRepository.save(empleado));
 
-		sqsService.queueLog(response, "", "PUT");
+		sqsService.queueLog(response, "POJO", "PUT");
 
 		return response;
 	}
